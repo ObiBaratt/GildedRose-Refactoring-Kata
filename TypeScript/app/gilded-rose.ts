@@ -39,11 +39,8 @@ export class GildedRose {
       case "Conjured Mana Cake":
         this.handleConjured(item);
         break;
-      case "Elixir of the Mongoose":
-        this.handleElixir(item);
-        break;
-      case "+5 Dexterity Vest":
-        this.handleDexterityVest(item);
+      default:
+        this.handleGeneralItem(item);
         break;
     }
   }
@@ -102,21 +99,7 @@ export class GildedRose {
     }
   }
 
-  handleElixir(item: Item) {
-    if (item.quality > 0) {
-      item.quality = item.quality - 1;
-    }
-
-    item.sellIn = item.sellIn - 1;
-
-    if (item.sellIn < 0) {
-      if (item.quality > 0) {
-        item.quality = item.quality - 1;
-      }
-    }
-  }
-
-  handleDexterityVest(item: Item) {
+  handleGeneralItem(item: Item) {
     if (item.quality > 0) {
       item.quality = item.quality - 1;
     }
